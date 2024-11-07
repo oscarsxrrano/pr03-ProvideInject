@@ -4,11 +4,13 @@
     // inject para recibir los datos de app.vue
     const products = inject('products')
     const moneda = inject('moneda')
-
+    const carrito = inject('carrito');
+    
     // alert del carrito
     function addToCart(product) {
-    alert(`${product.name}`
-    )}
+        carrito.value.push(product); 
+        alert(carrito.value.map(item => item.name).join(', '));
+    }
 
 
 </script>

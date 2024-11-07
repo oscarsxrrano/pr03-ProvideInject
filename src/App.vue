@@ -15,19 +15,33 @@
       { name: "Fries 🍟", price: 2 }
   ])
 
+  const orderName = ref('')
+  const carrito = ref([]);
+
   const moneda = computed(() => (
     currency.value === 'dol' ? '$' : '€'
   ));
 
   provide('moneda', moneda);
-  provide('products', products)
+  provide('products', products);
+  provide('cart', carrito);
+  provide('orderName', orderName);
+
+  function resetCarrito() {
+    carrito.value = []
+  };
+
+  provide('resetCarrito', resetCarrito);
+
 </script>
 
 
 <template>
   <div id="app">
-    <h1>Pedido Actual</h1>
-    <OrderComponent/>
+    
+    <div id="contenedor">
+      <h1>{{orderName || "Nuevo pedido" }}</h1>
+      <OrderComponent/>
 
     <!-- apartado de elegir la moneda -->
     <label for="currency">Currency</label>
@@ -36,6 +50,8 @@
       <option value="eur">Euro (€)</option>
     </select>
     <ProductListComponent />
+    </div>
+    
   </div>
 </template>
 <style scoped>

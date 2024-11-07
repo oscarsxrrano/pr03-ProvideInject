@@ -1,11 +1,15 @@
 <script setup>
-    import { ref } from 'vue';
+    import { inject, ref } from 'vue';
 
     const orderName = ref('');
 
+    const carrito = inject('carrito')
+    const reset = inject('resetCarrito')
+
     function placeOrder() {
-        alert(`La teva comanda "${orderName.value}" ha sigut enviada!`);
-        orderName.value = ''
+        alert(`${carrito.value.map(item => item.name).join(', ')}`);
+        orderName.value = '';
+        reset();
     }
 </script>
 

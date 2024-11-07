@@ -36,4 +36,15 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+
+}
+
+#contenedor {
+  text-align: center;
+  box-shadow: 5px 5px rgb(117, 76, 43);
+  border: solid black;
+  padding: 5%;
+  background-color: rgb(184, 130, 64);
+  color: black;
+  font-weight: bold;
 }
