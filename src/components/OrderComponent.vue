@@ -1,21 +1,23 @@
 <script setup>
-    import { inject, ref } from 'vue';
+import { inject } from 'vue';
 
-    const orderName = ref('');
+const orderName = inject('orderName');
+const carrito = inject('carrito');
+const resetCarrito = inject('resetCarrito');
 
-    const carrito = inject('carrito')
-    const reset = inject('resetCarrito')
-
-    function placeOrder() {
-        alert(`${carrito.value.map(item => item.name).join(', ')}`);
-        orderName.value = '';
-        reset();
-    }
+// funcion 
+function placeOrder() {
+  alert(`Pedido realizado con éxito! Disfrútalo!
+    ${carrito.value.map((producto) => producto.name).join(`, 
+    `)}`);
+  orderName.value = ''; 
+  resetCarrito();
+}
 </script>
 
 <template>
-    <div>
-        <input v-model="orderName" placeholder="Nom de la comanda..." />
-        <button @click="placeOrder">Place Order</button>
-    </div>
+  <div>
+    <input v-model="orderName" placeholder="Nom de la comanda..." />
+    <button @click="placeOrder">Place Order</button>
+  </div>
 </template>
